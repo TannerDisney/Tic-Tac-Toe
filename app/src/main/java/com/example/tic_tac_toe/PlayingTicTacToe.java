@@ -52,7 +52,7 @@ public class PlayingTicTacToe extends AppCompatActivity {
         newGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newGame();
+                newGame(v);
             }
         });
     }
@@ -67,8 +67,9 @@ public class PlayingTicTacToe extends AppCompatActivity {
     // On button click it will check which part of the array that its in and place it in the 2d array
     // After turn 3 it will start checking the board for a winning board from X or from O
 
-    public void newGame() {
-        turnCount = 1;
+    public void newGame(View v) {
+        clearBoard(v);
+        turnCount = 0;
         xWin = 0;
         oWin = 0;
     }
@@ -83,7 +84,8 @@ public class PlayingTicTacToe extends AppCompatActivity {
         bottomLeft.setText("");
         bottomMid.setText("");
         bottomRight.setText("");
-        turnCount = 1;
+        turnCount = 0;
+        turn.setText(R.string.player_x_s_turn);
         Toast.makeText(getApplicationContext(), "Board Cleared!", Toast.LENGTH_SHORT).show();
     }
 
@@ -201,6 +203,50 @@ public class PlayingTicTacToe extends AppCompatActivity {
             bottomRight.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
+        }
+    }
+
+    public void CheckForWinner() {
+
+    }
+
+    public String winByRow() {
+        for(int row = 0; i < board.length; row++) {
+            for(int col = 0; col < board[row].length; col++) {
+                if
+                (
+                    board[row][col].equals(board[row][col + 1]) &&
+                    board[row][col].equals(board[row][col + 2]) &&
+                    board[row][col].equals(board[row][col + 3])
+                )
+                {
+
+                }
+            }
+        }
+    }
+
+    public String winByColumn() {
+        for(int row = 0; i < board.length; row++) {
+            for(int col = 0; col < board[row].length; col++) {
+                if
+                (
+                        board[row][col].equals(board[row + 1][col]) &&
+                        board[row][col].equals(board[row + 2][col]) &&
+                        board[row][col].equals(board[row + 3][col])
+                )
+                {
+
+                }
+            }
+        }
+    }
+
+    public String winByDiagonal() {
+        for(int row = 0; i < board.length; row++) {
+            for(int col = 0; col < board[row].length; col++) {
+
+            }
         }
     }
 }
