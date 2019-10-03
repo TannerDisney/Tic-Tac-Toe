@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class PlayingTicTacToe extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class PlayingTicTacToe extends AppCompatActivity {
     Button bottomRight;
     String[][] board;
     Button newGame;
+    TextView turn;
     // Odd is X , Even is O
     int turnCount;
     // Win Counter for X
@@ -43,6 +45,8 @@ public class PlayingTicTacToe extends AppCompatActivity {
         bottomLeft = findViewById(R.id.btnBottomLeft); // [2][0]
         bottomMid = findViewById(R.id.btnBottomMid); // [2][1]
         bottomRight = findViewById(R.id.btnBottomRight); // [2][2]
+
+        turn = findViewById(R.id.txtTurn);
 
         newGame = findViewById(R.id.btnNewGame);
         newGame.setOnClickListener(new View.OnClickListener() {
@@ -79,23 +83,124 @@ public class PlayingTicTacToe extends AppCompatActivity {
         bottomLeft.setText("");
         bottomMid.setText("");
         bottomRight.setText("");
+        turnCount = 1;
         Toast.makeText(getApplicationContext(), "Board Cleared!", Toast.LENGTH_SHORT).show();
     }
 
     public void topLeftClicked(View v) {
         if(turnCount % 2 == 0) {
             topLeft.setText("X");
+            turnCount++;
+            turn.setText(R.string.player_o_s_turn);
         }
         else {
             topLeft.setText("O");
+            turnCount++;
+            turn.setText(R.string.player_x_s_turn);
         }
     }
 
     public void topMiddleClicked(View v) {
-
+        if(turnCount % 2 == 0) {
+            topMid.setText("X");
+            turnCount++;
+            turn.setText(R.string.player_o_s_turn);
+        }
+        else {
+            topMid.setText("O");
+            turnCount++;
+            turn.setText(R.string.player_x_s_turn);
+        }
     }
 
     public void topRightClicked(View v) {
+        if(turnCount % 2 == 0) {
+            topRight.setText("X");
+            turnCount++;
+            turn.setText(R.string.player_o_s_turn);
+        }
+        else {
+            topRight.setText("O");
+            turnCount++;
+            turn.setText(R.string.player_x_s_turn);
+        }
+    }
 
+    public void middleLeftClicked(View v) {
+        if(turnCount % 2 == 0) {
+            midLeft.setText("X");
+            turnCount++;
+            turn.setText(R.string.player_o_s_turn);
+        }
+        else {
+            midLeft.setText("O");
+            turnCount++;
+            turn.setText(R.string.player_x_s_turn);
+        }
+    }
+
+    public void middleClicked(View v) {
+        if(turnCount % 2 == 0) {
+            middle.setText("X");
+            turnCount++;
+            turn.setText(R.string.player_o_s_turn);
+        }
+        else {
+            middle.setText("O");
+            turnCount++;
+            turn.setText(R.string.player_x_s_turn);
+        }
+    }
+
+    public void middleRightClicked(View v) {
+        if(turnCount % 2 == 0) {
+            midRight.setText("X");
+            turnCount++;
+            turn.setText(R.string.player_o_s_turn);
+        }
+        else {
+            midRight.setText("O");
+            turnCount++;
+            turn.setText(R.string.player_x_s_turn);
+        }
+    }
+
+    public void bottomLeftClicked(View v) {
+        if(turnCount % 2 == 0) {
+            bottomLeft.setText("X");
+            turnCount++;
+            turn.setText(R.string.player_o_s_turn);
+        }
+        else {
+            bottomLeft.setText("O");
+            turnCount++;
+            turn.setText(R.string.player_x_s_turn);
+        }
+    }
+
+    public void bottomMiddleClicked(View v) {
+        if(turnCount % 2 == 0) {
+            bottomMid.setText("X");
+            turnCount++;
+            turn.setText(R.string.player_o_s_turn);
+        }
+        else {
+            bottomMid.setText("O");
+            turnCount++;
+            turn.setText(R.string.player_x_s_turn);
+        }
+    }
+
+    public void bottomRightClicked(View v) {
+        if(turnCount % 2 == 0) {
+            bottomRight.setText("X");
+            turnCount++;
+            turn.setText(R.string.player_o_s_turn);
+        }
+        else {
+            bottomRight.setText("O");
+            turnCount++;
+            turn.setText(R.string.player_x_s_turn);
+        }
     }
 }
