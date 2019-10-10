@@ -84,6 +84,15 @@ public class PlayingTicTacToe extends AppCompatActivity {
         bottomLeft.setText("");
         bottomMid.setText("");
         bottomRight.setText("");
+        topLeft.setEnabled(true);
+        topMid.setEnabled(true);
+        topRight.setEnabled(true);
+        midLeft.setEnabled(true);
+        middle.setEnabled(true);
+        midRight.setEnabled(true);
+        bottomLeft.setEnabled(true);
+        bottomMid.setEnabled(true);
+        bottomRight.setEnabled(true);
         turnCount = 0;
         turn.setText(R.string.player_x_s_turn);
         Toast.makeText(getApplicationContext(), "Board Cleared!", Toast.LENGTH_SHORT).show();
@@ -94,11 +103,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             topLeft.setText("X");
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
+            topLeft.setEnabled(false);
         }
         else {
             topLeft.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
+            topLeft.setEnabled(false);
         }
     }
 
@@ -107,11 +118,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             topMid.setText("X");
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
+            topMid.setEnabled(false);
         }
         else {
             topMid.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
+            topMid.setEnabled(false);
         }
     }
 
@@ -120,11 +133,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             topRight.setText("X");
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
+            topRight.setEnabled(false);
         }
         else {
             topRight.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
+            topRight.setEnabled(false);
         }
     }
 
@@ -133,11 +148,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             midLeft.setText("X");
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
+            midLeft.setEnabled(false);
         }
         else {
             midLeft.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
+            midLeft.setEnabled(false);
         }
     }
 
@@ -146,11 +163,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             middle.setText("X");
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
+            middle.setEnabled(false);
         }
         else {
             middle.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
+            middle.setEnabled(false);
         }
     }
 
@@ -159,11 +178,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             midRight.setText("X");
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
+            midRight.setEnabled(false);
         }
         else {
             midRight.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
+            midRight.setEnabled(false);
         }
     }
 
@@ -172,11 +193,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             bottomLeft.setText("X");
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
+            bottomLeft.setEnabled(false);
         }
         else {
             bottomLeft.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
+            bottomLeft.setEnabled(false);
         }
     }
 
@@ -185,11 +208,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             bottomMid.setText("X");
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
+            bottomMid.setEnabled(false);
         }
         else {
             bottomMid.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
+            bottomMid.setEnabled(false);
         }
     }
 
@@ -198,55 +223,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             bottomRight.setText("X");
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
+            bottomRight.setEnabled(false);
         }
         else {
             bottomRight.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
-        }
-    }
-
-    public void CheckForWinner() {
-
-    }
-
-    public String winByRow() {
-        for(int row = 0; i < board.length; row++) {
-            for(int col = 0; col < board[row].length; col++) {
-                if
-                (
-                    board[row][col].equals(board[row][col + 1]) &&
-                    board[row][col].equals(board[row][col + 2]) &&
-                    board[row][col].equals(board[row][col + 3])
-                )
-                {
-
-                }
-            }
-        }
-    }
-
-    public String winByColumn() {
-        for(int row = 0; i < board.length; row++) {
-            for(int col = 0; col < board[row].length; col++) {
-                if
-                (
-                        board[row][col].equals(board[row + 1][col]) &&
-                        board[row][col].equals(board[row + 2][col]) &&
-                        board[row][col].equals(board[row + 3][col])
-                )
-                {
-
-                }
-            }
-        }
-    }
-
-    public String winByDiagonal() {
-        for(int row = 0; i < board.length; row++) {
-            for(int col = 0; col < board[row].length; col++) {
-
-            }
+            bottomRight.setEnabled(false);
         }
     }
 }
