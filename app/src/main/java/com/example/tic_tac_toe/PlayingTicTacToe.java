@@ -3,6 +3,7 @@ package com.example.tic_tac_toe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,9 +19,11 @@ public class PlayingTicTacToe extends AppCompatActivity {
     Button bottomLeft;
     Button bottomMid;
     Button bottomRight;
-    String[][] board;
     Button newGame;
+    Button[] board;
     TextView turn;
+    TextView txtOWins;
+    TextView txtXWins;
     // Odd is X , Even is O
     int turnCount;
     // Win Counter for X
@@ -31,7 +34,7 @@ public class PlayingTicTacToe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing_tic_tac_toe);
-        board = new String[3][3];
+        board = new Button[9];
         // TicTacToe Grid
         // Top Row
         topLeft = findViewById(R.id.btnTopLeft); // [0][0]
@@ -45,6 +48,20 @@ public class PlayingTicTacToe extends AppCompatActivity {
         bottomLeft = findViewById(R.id.btnBottomLeft); // [2][0]
         bottomMid = findViewById(R.id.btnBottomMid); // [2][1]
         bottomRight = findViewById(R.id.btnBottomRight); // [2][2]
+
+        txtXWins = findViewById(R.id.txtXWins);
+        txtOWins = findViewById(R.id.txtOWins);
+
+        // Inserting Buttons into an array
+        board[0] = topLeft;
+        board[1] = topMid;
+        board[2] = topRight;
+        board[3] = midLeft;
+        board[4] = middle;
+        board[5] = midRight;
+        board[6] = bottomLeft;
+        board[7] = bottomMid;
+        board[8] = bottomRight;
 
         turn = findViewById(R.id.txtTurn);
 
@@ -72,6 +89,8 @@ public class PlayingTicTacToe extends AppCompatActivity {
         turnCount = 0;
         xWin = 0;
         oWin = 0;
+        txtXWins.setText("Player X's Wins = 0");
+        txtOWins.setText("Player O's Wins = 0");
     }
 
     public void clearBoard(View v) {
@@ -104,12 +123,14 @@ public class PlayingTicTacToe extends AppCompatActivity {
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
             topLeft.setEnabled(false);
+            declareWinner();
         }
         else {
             topLeft.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
             topLeft.setEnabled(false);
+            declareWinner();
         }
     }
 
@@ -119,12 +140,14 @@ public class PlayingTicTacToe extends AppCompatActivity {
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
             topMid.setEnabled(false);
+            declareWinner();
         }
         else {
             topMid.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
             topMid.setEnabled(false);
+            declareWinner();
         }
     }
 
@@ -134,12 +157,14 @@ public class PlayingTicTacToe extends AppCompatActivity {
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
             topRight.setEnabled(false);
+            declareWinner();
         }
         else {
             topRight.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
             topRight.setEnabled(false);
+            declareWinner();
         }
     }
 
@@ -149,12 +174,14 @@ public class PlayingTicTacToe extends AppCompatActivity {
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
             midLeft.setEnabled(false);
+            declareWinner();
         }
         else {
             midLeft.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
             midLeft.setEnabled(false);
+            declareWinner();
         }
     }
 
@@ -164,12 +191,14 @@ public class PlayingTicTacToe extends AppCompatActivity {
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
             middle.setEnabled(false);
+            declareWinner();
         }
         else {
             middle.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
             middle.setEnabled(false);
+            declareWinner();
         }
     }
 
@@ -179,12 +208,14 @@ public class PlayingTicTacToe extends AppCompatActivity {
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
             midRight.setEnabled(false);
+            declareWinner();
         }
         else {
             midRight.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
             midRight.setEnabled(false);
+            declareWinner();
         }
     }
 
@@ -194,12 +225,14 @@ public class PlayingTicTacToe extends AppCompatActivity {
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
             bottomLeft.setEnabled(false);
+            declareWinner();
         }
         else {
             bottomLeft.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
             bottomLeft.setEnabled(false);
+            declareWinner();
         }
     }
 
@@ -209,12 +242,14 @@ public class PlayingTicTacToe extends AppCompatActivity {
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
             bottomMid.setEnabled(false);
+            declareWinner();
         }
         else {
             bottomMid.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
             bottomMid.setEnabled(false);
+            declareWinner();
         }
     }
 
@@ -224,12 +259,58 @@ public class PlayingTicTacToe extends AppCompatActivity {
             turnCount++;
             turn.setText(R.string.player_o_s_turn);
             bottomRight.setEnabled(false);
+            declareWinner();
         }
         else {
             bottomRight.setText("O");
             turnCount++;
             turn.setText(R.string.player_x_s_turn);
             bottomRight.setEnabled(false);
+            declareWinner();
         }
+    }
+
+    public void declareWinner() {
+        String winner = checkForWinner();
+        if(winner.equals("X")) {
+            xWin++;
+            Toast.makeText(getApplicationContext(), "X Wins! Reset board for next game with CLEAR GAME", Toast.LENGTH_LONG).show();
+            txtXWins.setText("Player X's Wins = " + xWin);
+        }
+        else if(winner.equals("O")) {
+            oWin++;
+            Toast.makeText(getApplicationContext(), "O Wins! Reset board for next game with CLEAR GAME", Toast.LENGTH_LONG).show();
+            txtOWins.setText("Player O's Wins = " + oWin);
+        }
+
+        if(turnCount >= 9) {
+            Toast.makeText(getApplicationContext(), "It's a Draw! Reset board for next game with CLEAR GAME", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public String checkForWinner() {
+        // Checking Row's For Winner
+        if(topLeft.getText() == topMid.getText() && topMid.getText() == topRight.getText())
+            return topLeft.getText().toString();
+        else if(midLeft.getText() == middle.getText() && middle.getText() == midRight.getText())
+            return midLeft.getText().toString();
+        else if(bottomLeft.getText() == bottomMid.getText() && bottomMid.getText() == bottomRight.getText())
+            return bottomLeft.getText().toString();
+
+        // Checking Column's For Winner
+        if(topLeft.getText() == midLeft.getText() && midLeft.getText() == bottomLeft.getText())
+            return topLeft.getText().toString();
+        else if(topMid.getText() == middle.getText() && middle.getText() == bottomMid.getText())
+            return topMid.getText().toString();
+        else if(topRight.getText() == midRight.getText() && midRight.getText() == bottomRight.getText())
+            return topRight.getText().toString();
+
+        // Checking Diagonal and Anti-Diagonal For Winner
+        if(topLeft.getText() == middle.getText() && middle.getText() == bottomRight.getText())
+            return topLeft.getText().toString();
+        else if(topRight.getText() == middle.getText() && middle.getText() == bottomLeft.getText())
+            return topRight.getText().toString();
+
+        return "";
     }
 }

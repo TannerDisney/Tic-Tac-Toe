@@ -9,4 +9,5 @@
     <string name="player_x_s_wins_0">Player X\'s Wins = 0</string>
     <string name="clear_game">Clear Game</string>
     <string name="player_o_s_turn">Player O\'s Turn!</string>
+    <string name="button">Determine Winner</string>
 </resources>
