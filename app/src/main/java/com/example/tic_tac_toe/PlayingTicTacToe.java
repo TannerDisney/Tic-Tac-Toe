@@ -274,17 +274,21 @@ public class PlayingTicTacToe extends AppCompatActivity {
         String winner = checkForWinner();
         if(winner.equals("X")) {
             xWin++;
-            Toast.makeText(getApplicationContext(), "X Wins! Reset board for next game with CLEAR GAME", Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(), "X Wins! Reset board for next game with CLEAR GAME", Toast.LENGTH_LONG).show();
             txtXWins.setText("Player X's Wins = " + xWin);
+            turn.setText("Player X Wins!");
+            disableGameState();
         }
         else if(winner.equals("O")) {
             oWin++;
-            Toast.makeText(getApplicationContext(), "O Wins! Reset board for next game with CLEAR GAME", Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(), "O Wins! Reset board for next game with CLEAR GAME", Toast.LENGTH_LONG).show();
             txtOWins.setText("Player O's Wins = " + oWin);
+            turn.setText("Player O Wins!");
+            disableGameState();
         }
-
-        if(turnCount >= 9) {
-            Toast.makeText(getApplicationContext(), "It's a Draw! Reset board for next game with CLEAR GAME", Toast.LENGTH_LONG).show();
+        else if(turnCount > 8) {
+            // Toast.makeText(getApplicationContext(), "It's a Draw! Reset board for next game with CLEAR GAME", Toast.LENGTH_LONG).show();
+            turn.setText("Game is a Draw!");
         }
     }
 
@@ -312,5 +316,13 @@ public class PlayingTicTacToe extends AppCompatActivity {
             return topRight.getText().toString();
 
         return "";
+    }
+
+    public void disableGameState() {
+        for(int i = 0; i < board.length; i++) {
+            if(board[i].isEnabled()) {
+                board[i].setEnabled(false);
+            }
+        }
     }
 }
